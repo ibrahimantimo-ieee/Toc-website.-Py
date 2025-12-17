@@ -1,4 +1,4 @@
-        import streamlit as st
+import streamlit as st
 
 # [span_0](start_span)[span_1](start_span)إعدادات الصفحة العامة وفقاً للمقترح[span_0](end_span)[span_1](end_span)
 st.set_page_config(page_title="TOC Website Proposal", layout="wide")
