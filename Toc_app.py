@@ -1,9 +1,9 @@
 import streamlit as st
 
-# إعدادات الصفحة العامة بناءً على المقترح
-st.set_page_config(page_title="TOC Website Proposal", layout="wide")
+# 1. إعدادات الصفحة العامة (اسم الموقع وتنسيق العرض)
+st.set_page_config(page_title="TOC Website", layout="wide")
 
-# تخصيص التصميم بالألوان الهادئة (الأزرق/الأخضر) المقترحة
+# 2. تخصيص التصميم بالألوان الهادئة (الأزرق والأخضر) كما ورد في المقترح
 st.markdown("""
     <style>
     .main { background-color: #f0f8ff; }
@@ -11,11 +11,11 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# شريط التنقل الجانبي (Sidebar) للوصول للصفحات الأربعة
-st.sidebar.title("القائمة الرئيسية")
-page = st.sidebar.radio("انتقل إلى:", ["الرئيسية", "المشاريع", "التطوع", "اتصل بنا"])
+# 3. شريط التنقل الجانبي (Sidebar) للوصول للصفحات الأربعة
+st.sidebar.title("منظمة TOC")
+page = st.sidebar.radio("انتقل إلى الصفحات:", ["الرئيسية", "المشاريع", "التطوع", "اتصل بنا"])
 
-# --- 1. الصفحة الرئيسية ---
+# --- الصفحة الأولى: الرئيسية ---
 if page == "الرئيسية":
     col1, col2 = st.columns([1, 4])
     with col1:
@@ -26,64 +26,61 @@ if page == "الرئيسية":
 
     st.divider()
     st.header("من نحن؟")
-    st.write("نحن منظمة تسعى لتحقيق العدالة الاجتماعية وتوفير الاحتياجات الأساسية.")
+    st.write("نحن منظمة تسعى لتحقيق العدالة الاجتماعية وتوفير الاحتياجات الأساسية من خلال رؤية طموحة.")
     
     col_v, col_g = st.columns(2)
     with col_v:
-        st.subheader("الرؤية")
+        st.subheader("رؤيتنا")
         st.write("أن نصبح منظمة رائدة في تقديم المساعدات الإنسانية وتحقيق العدالة الاجتماعية.")
     with col_g:
         st.subheader("أهدافنا")
         st.write("- تحسين ظروف المحتاجين.\n- تعزيز التعليم والصحة.\n- تقديم مساعدات طارئة.")
 
-    st.subheader("ماذا نفعل؟")
-    st.write("توزيع الغذاء، الرعاية الصحية، وتعليم الأطفال.")
-
     st.divider()
+    # أزرار التفاعل (Call-to-Action)
     c1, c2, c3 = st.columns(3)
-    c1.button("Donate Now / تبرع الآن", type="primary", use_container_width=True)
-    c2.button("Join Us / انضم إلينا", use_container_width=True)
-    c3.button("Learn About Projects / مشاريعنا", use_container_width=True)
+    c1.button("تبرع الآن / Donate Now", type="primary", use_container_width=True)
+    c2.button("انضم إلينا / Join Us", use_container_width=True)
+    c3.button("تعرف على مشاريعنا", use_container_width=True)
 
-# --- 2. صفحة المشاريع ---
+# --- الصفحة الثانية: المشاريع ---
 elif page == "المشاريع":
     st.header("مشاريع المنظمة")
     tab1, tab2 = st.tabs(["المشاريع الحالية", "المشاريع السابقة"])
     
     with tab1:
-        st.subheader("مشروع توزيع الغذاء في المناطق النائية")
-        st.write("**الوصف:** تفاصيل الأهداف، المناطق المستهدفة، والجدول الزمني.")
-        st.button("ساهم الآن / Contribute Now")
+        st.subheader("مشروع توزيع الغذاء")
+        st.write("**الوصف:** تفاصيل حول الأهداف والجدول الزمني.")
+        st.button("ساهم الآن")
 
     with tab2:
         st.subheader("المشاريع المكتملة")
-        st.write("عرض الصور والنتائج الملموسة والتقارير عن الأثر الذي تم تحقيقه.")
+        st.write("تقرير الأثر الذي تحقق والنتائج الملموسة.")
 
-# --- 3. صفحة التطوع ---
+# --- الصفحة الثالثة: التطوع ---
 elif page == "التطوع":
     st.header("انضم إلى فريق المتطوعين")
-    st.write("التطوع هو فرصة للمساهمة في تغيير حياة الآخرين وتقديم العون.")
+    st.write("التطوع فرصة للمساهمة في تغيير حياة الآخرين.")
     
     st.subheader("لماذا تتطوع معنا؟")
-    st.write("- إحداث تأثير مباشر.\n- تطوير المهارات الشخصية.\n- الحصول على شهادة تقدير.")
+    st.write("* إحداث تأثير مباشر.\n* تطوير المهارات.\n* الحصول على شهادة تقدير.")
     
-    st.info("**تطوع أونلاين:** كتابة محتوى، إدارة حملات رقمية.")
-    st.success("**تطوع ميداني:** توزيع المساعدات في الميدان.")
+    st.info("**تطوع أونلاين:** إدارة حملات رقمية.")
+    st.success("**تطوع ميداني:** توزيع المساعدات.")
 
-# --- 4. اتصل بنا ---
+# --- الصفحة الرابعة: اتصل بنا ---
 elif page == "اتصل بنا":
     st.header("تواصل معنا")
-    with st.form("contact"):
+    with st.form("contact_form"):
         st.text_input("الاسم")
         st.text_input("البريد الإلكتروني")
         st.text_area("الرسالة")
         st.form_submit_button("إرسال الرسالة")
 
     st.divider()
-    st.write("📧 Email: info@tabakh.org")
-    st.write("📞 Phone: 123-456-789")
-    st.write("📍 Address: PORTSUDAN Street, City of Goodness")
+    st.write("📧 info@tabakh.org | 📞 123-456-789")
+    st.write("📍 شارع بورتسودان، مدينة الخير")
 
-# التذييل
+# تذييل الصفحة
 st.sidebar.markdown("---")
 st.sidebar.write("BY: ENG IBRAHIM MUSA")
